@@ -6,7 +6,5 @@ export default function Word({ words }) {
     .split("")
     .map((letter) => <span key={letter}>{letter.toLocaleUpperCase()}</span>);
 
-  console.log(wordLetters);
-
   return <section className="letters">{wordLetters}</section>;
 }
