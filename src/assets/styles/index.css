@@ -50,3 +50,14 @@ header div p {
 .game-status p {
   margin: 0.3rem;
 }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 350px;
+  justify-content: center;
+}
+
+.chips span {
+  padding: 0.5rem;
+}

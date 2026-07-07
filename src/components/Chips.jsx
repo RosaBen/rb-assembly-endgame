@@ -1,7 +1,11 @@
 export default function Chips({ chips }) {
-  console.log(chips);
   const languages = chips.map((chip, index) => (
-    <span key={index}>{chip.name}</span>
+    <span
+      key={index}
+      style={{ backgroundColor: chip.backgroundColor, color: chip.color }}
+    >
+      {chip.name}
+    </span>
   ));
-  return <section>{languages}</section>;
+  return <section className="chips">{languages}</section>;
 }
