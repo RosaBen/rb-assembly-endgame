@@ -1,8 +1,5 @@
-import { useState } from "react";
-export default function Word({ words }) {
-  const [currentWord, setCurrentWord] = useState("REACT");
-
-  const wordLetters = currentWord
+export default function Word({ word }) {
+  const wordLetters = word
     .split("")
     .map((letter) => <span key={letter}>{letter.toLocaleUpperCase()}</span>);
 
