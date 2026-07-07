@@ -3,7 +3,9 @@ export default function Keyboard() {
 
   const keyboardsLetters = alphabet
     .split("")
-    .map((letter) => <span key={letter}>{letter.toLocaleUpperCase()}</span>);
+    .map((letter) => (
+      <button key={letter}>{letter.toLocaleUpperCase()}</button>
+    ));
 
   return <section className="keyboard">{keyboardsLetters}</section>;
 }

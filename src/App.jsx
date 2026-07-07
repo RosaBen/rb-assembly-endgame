@@ -7,13 +7,14 @@ import Keyboard from "./components/Keyboard";
 import { languages } from "./assets/scripts/data";
 function App() {
   return (
-    <>
+    <main>
       <Header />
       <Chips chips={languages} />
       <Word words={languages} />
       <Keyboard />
+      <button className="new-game">New Game</button>
       <Footer />
-    </>
+    </main>
   );
 }
 
