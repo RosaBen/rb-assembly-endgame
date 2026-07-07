@@ -51,13 +51,35 @@ header div p {
   margin: 0.3rem;
 }
 
-.chips {
+.language-chips {
   display: flex;
   flex-wrap: wrap;
   max-width: 350px;
   justify-content: center;
+  gap: 0.3rem;
 }
 
-.chips span {
+.language-chips span {
   padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.letters {
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding-block: 1rem;
+}
+
+.letters span {
+  background-color: #8e8e8e;
+  padding: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  background-color: grey;
+  padding-block: 1rem;
+  margin-top: 3rem;
 }
