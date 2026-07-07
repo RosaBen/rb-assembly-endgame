@@ -57,6 +57,7 @@ header div p {
   max-width: 350px;
   justify-content: center;
   gap: 0.3rem;
+  margin-bottom: 2rem;
 }
 
 .language-chips span {
@@ -73,8 +74,15 @@ header div p {
 }
 
 .letters span {
-  background-color: #8e8e8e;
+  background-color: #323232;
+  height: 40px;
+  width: 40px;
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125rem;
+  border-bottom: 1px solid #f9f4da;
 }
 
 footer {

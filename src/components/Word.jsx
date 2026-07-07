@@ -1,12 +1,12 @@
 import { useState } from "react";
 export default function Word({ words }) {
-  const [currentWord, setCurrentWord] = useState("");
+  const [currentWord, setCurrentWord] = useState("REACT");
 
-  const wordLetters = words[0].name.split("");
+  const wordLetters = currentWord
+    .split("")
+    .map((letter) => <span key={letter}>{letter.toLocaleUpperCase()}</span>);
 
-  const blocks = wordLetters.map((letter) => (
-    <span key={letter}>{letter}</span>
-  ));
+  console.log(wordLetters);
 
-  return <section className="letters">{blocks}</section>;
+  return <section className="letters">{wordLetters}</section>;
 }
