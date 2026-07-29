@@ -22,7 +22,7 @@ function App() {
       <Word
         word={currentWord}
         selectedLetter={guessedLetters}
-        setSelectedLetter={setGuessedLetters}
+        // setSelectedLetter={setGuessedLetters}
       />
       <Keyboard
         onSelect={handleSelect}
