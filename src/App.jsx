@@ -16,10 +16,17 @@ function App() {
   };
 
   const lowerCurrentWord = currentWord.toLowerCase();
-
+  console.log(guessedLetters);
   const wrongGuessedCount = guessedLetters.filter(
     (letter) => !lowerCurrentWord.includes(letter),
   ).length;
+
+  const isGameWon = lowerCurrentWord
+    .split("")
+    .every((letter) => guessedLetters.includes(letter));
+
+  const isGameLost = wrongGuessedCount >= languages.length - 1;
+  const isGameOver = isGameWon || isGameLost;
 
   return (
     <main>
@@ -31,7 +38,7 @@ function App() {
         selected={guessedLetters}
         currentWord={lowerCurrentWord}
       />
-      <button className="new-game">New Game</button>
+      {isGameOver && <button className="new-game">New Game</button>}
       <Footer />
     </main>
   );
