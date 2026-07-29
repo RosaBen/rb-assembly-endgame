@@ -7,5 +7,9 @@ export default function Status({ status, win, lost, farewell }) {
     farewell: farewell,
   });
 
-  return <section className={classStatus}>{status()}</section>;
+  return (
+    <section className={classStatus} aria-live="polite" role="status">
+      {status()}
+    </section>
+  );
 }

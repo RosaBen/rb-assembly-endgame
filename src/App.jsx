@@ -10,32 +10,39 @@ import { languages } from "./assets/scripts/data";
 import { getFarewellText } from "./assets/scripts/utils";
 
 function App() {
+  const { name, id } = languages;
+
+  // state values
   const [currentWord, setCurrentWord] = useState("REACT");
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  const { name, id } = languages;
-
+  // derived values
+  const numGuessedLeft = languages.length - 1;
   const lowerCurrentWord = currentWord.toLowerCase();
-  const handleSelect = (value) => {
-    setGuessedLetters((prev) =>
-      prev.includes(value) ? prev : [...prev, value],
-    );
-  };
-
   const wrongGuessedCount = guessedLetters.filter(
     (letter) => !lowerCurrentWord.includes(letter),
   ).length;
-
   const isGameWon = lowerCurrentWord
     .split("")
     .every((letter) => guessedLetters.includes(letter));
-
-  const isGameLost = wrongGuessedCount >= languages.length - 1;
+  const isGameLost = wrongGuessedCount >= numGuessedLeft;
   const isGameOver = isGameWon || isGameLost;
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
   const islastGuessIncorrect =
     lastGuessedLetter && !lowerCurrentWord.includes(lastGuessedLetter);
+  const srWord = lowerCurrentWord
+    .split("")
+    .map((letter) =>
+      guessedLetters.includes(letter) ? letter + "." : "blank.",
+    )
+    .join(" ");
 
+  // functions
+  function handleSelect(value) {
+    setGuessedLetters((prev) =>
+      prev.includes(value) ? prev : [...prev, value],
+    );
+  }
   function renderGameStatus() {
     if (!isGameOver && islastGuessIncorrect) {
       return (
@@ -74,12 +81,19 @@ function App() {
         lost={isGameLost}
         farewell={islastGuessIncorrect}
       />
-      <Chips
-        langs={languages}
-        count={wrongGuessedCount}
-        // onChangeChipState={handleChipState}
-      />
+      <Chips langs={languages} count={wrongGuessedCount} />
       <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
+
+      {/* Combined visually-hidden aria-live region for status updates */}
+      <section className="sr-only" aria-live="polite" role="status">
+        <p>
+          {lowerCurrentWord.includes(lastGuessedLetter)
+            ? `Correct! The letter ${lastGuessedLetter} is in the word`
+            : `Sorry, The letter ${lastGuessedLetter} is not in the word`}
+          You have {numGuessedLeft} attempts left.
+        </p>
+        <p>{`Current Word: ${srWord}`}</p>
+      </section>
       <Keyboard
         onSelect={handleSelect}
         selected={guessedLetters}

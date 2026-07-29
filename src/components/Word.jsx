@@ -7,5 +7,9 @@ export default function Word({ word, selectedLetter }) {
       </span>
     ));
 
-  return <section className="letters">{wordLetters}</section>;
+  return (
+    <>
+      <section className="letters">{wordLetters}</section>
+    </>
+  );
 }

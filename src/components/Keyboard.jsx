@@ -23,6 +23,8 @@ export default function Keyboard({
         onClick={() => onSelect(letter)}
         className={className}
         disabled={disabled}
+        aria-disabled={selected.includes(letter)}
+        aria-label={`letter${letter}`}
       >
         {letter.toUpperCase()}
       </button>
