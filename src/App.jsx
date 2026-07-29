@@ -84,6 +84,7 @@ function App() {
         onSelect={handleSelect}
         selected={guessedLetters}
         currentWord={lowerCurrentWord}
+        disabled={isGameOver}
       />
       {isGameOver && <button className="new-game">New Game</button>}
       <Footer />
