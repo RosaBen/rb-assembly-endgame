@@ -16,7 +16,7 @@ function App() {
   };
 
   const lowerCurrentWord = currentWord.toLowerCase();
-  console.log(guessedLetters);
+
   const wrongGuessedCount = guessedLetters.filter(
     (letter) => !lowerCurrentWord.includes(letter),
   ).length;
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <main>
-      <Header />
+      <Header win={isGameWon} lost={isGameLost} over={isGameOver} />
       <Chips langs={languages} count={wrongGuessedCount} />
       <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
       <Keyboard
