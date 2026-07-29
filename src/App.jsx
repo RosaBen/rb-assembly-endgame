@@ -24,7 +24,11 @@ function App() {
         selectedLetter={guessedLetters}
         setSelectedLetter={setGuessedLetters}
       />
-      <Keyboard onSelect={handleSelect} />
+      <Keyboard
+        onSelect={handleSelect}
+        selected={guessedLetters}
+        currentWord={currentWord}
+      />
       <button className="new-game">New Game</button>
       <Footer />
     </main>

@@ -115,11 +115,11 @@ header div p {
   cursor: pointer;
 }
 
-.correct {
+.keyboard button.correct {
   background-color: green;
 }
 
-.wrong {
+.keyboard button.wrong {
   background-color: red;
 }
 
@@ -134,6 +134,10 @@ header div p {
   margin-inline: auto;
   cursor: pointer;
   margin-top: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 3px 3px 5px white;
 }
 
 footer {
@@ -141,4 +145,12 @@ footer {
   background-color: grey;
   padding-block: 1rem;
   margin-top: 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 5px white;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
 }
