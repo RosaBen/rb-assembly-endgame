@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Chips from "./components/Chips";
@@ -6,16 +7,18 @@ import Word from "./components/Word";
 import Keyboard from "./components/Keyboard";
 
 import { languages } from "./assets/scripts/data";
+import { getFarewellText } from "./assets/scripts/utils";
+
 function App() {
   const [currentWord, setCurrentWord] = useState("REACT");
   const [guessedLetters, setGuessedLetters] = useState([]);
+
+  const lowerCurrentWord = currentWord.toLowerCase();
   const handleSelect = (value) => {
     setGuessedLetters((prev) =>
       prev.includes(value) ? prev : [...prev, value],
     );
   };
-
-  const lowerCurrentWord = currentWord.toLowerCase();
 
   const wrongGuessedCount = guessedLetters.filter(
     (letter) => !lowerCurrentWord.includes(letter),
@@ -27,10 +30,17 @@ function App() {
 
   const isGameLost = wrongGuessedCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+  const islastGuessIncorrect =
+    lastGuessedLetter && !lowerCurrentWord.includes(lastGuessedLetter);
 
   function renderGameStatus() {
-    if (!isGameOver) {
-      return null;
+    if (!isGameOver && islastGuessIncorrect) {
+      return (
+        <>
+          <p className="farewell-text">test</p>
+        </>
+      );
     }
 
     if (isGameWon) {
@@ -40,7 +50,7 @@ function App() {
           <p>Well done! 🎉</p>
         </>
       );
-    } else {
+    } else if (isGameLost) {
       return (
         <>
           <h2>Game over!</h2>
@@ -48,12 +58,18 @@ function App() {
         </>
       );
     }
+
+    return null;
   }
 
   return (
     <main>
       <Header statusGame={renderGameStatus} win={isGameWon} lost={isGameLost} />
-      <Chips langs={languages} count={wrongGuessedCount} />
+      <Chips
+        langs={languages}
+        count={wrongGuessedCount}
+        // onChangeChipState={handleChipState}
+      />
       <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
       <Keyboard
         onSelect={handleSelect}
