@@ -28,9 +28,31 @@ function App() {
   const isGameLost = wrongGuessedCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
 
+  function renderGameStatus() {
+    if (!isGameOver) {
+      return null;
+    }
+
+    if (isGameWon) {
+      return (
+        <>
+          <h2>You win!</h2>
+          <p>Well done! 🎉</p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h2>Game over!</h2>
+          <p>You lose! Better start learning Assembly 😭</p>
+        </>
+      );
+    }
+  }
+
   return (
     <main>
-      <Header win={isGameWon} lost={isGameLost} over={isGameOver} />
+      <Header statusGame={renderGameStatus} win={isGameWon} lost={isGameLost} />
       <Chips langs={languages} count={wrongGuessedCount} />
       <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
       <Keyboard
