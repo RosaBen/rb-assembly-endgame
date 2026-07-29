@@ -17,18 +17,15 @@ function App() {
 
   const lowerCurrentWord = currentWord.toLowerCase();
 
-  const wrongGuessedArray = guessedLetters.filter(
+  const wrongGuessedCount = guessedLetters.filter(
     (letter) => !lowerCurrentWord.includes(letter),
-  );
+  ).length;
+
   return (
     <main>
       <Header />
-      <Chips chips={languages} />
-      <Word
-        word={lowerCurrentWord}
-        selectedLetter={guessedLetters}
-        // setSelectedLetter={setGuessedLetters}
-      />
+      <Chips langs={languages} count={wrongGuessedCount} />
+      <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
       <Keyboard
         onSelect={handleSelect}
         selected={guessedLetters}

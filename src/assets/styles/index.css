@@ -67,9 +67,24 @@ header div p {
   margin-bottom: 2rem;
 }
 
-.language-chips span {
+.language-chips .chip {
   padding: 0.5rem;
   border-radius: 0.25rem;
+  position: relative;
+}
+
+.language-chips .chip.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .letters {
