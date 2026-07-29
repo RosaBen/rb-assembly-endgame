@@ -13,6 +13,8 @@ function App() {
   const [currentWord, setCurrentWord] = useState("REACT");
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const { name, id } = languages;
+
   const lowerCurrentWord = currentWord.toLowerCase();
   const handleSelect = (value) => {
     setGuessedLetters((prev) =>
@@ -38,7 +40,9 @@ function App() {
     if (!isGameOver && islastGuessIncorrect) {
       return (
         <>
-          <p className="farewell-text">test</p>
+          <p className="farewell-text">
+            {getFarewellText(languages[wrongGuessedCount - 1].name)}
+          </p>
         </>
       );
     }
@@ -64,7 +68,12 @@ function App() {
 
   return (
     <main>
-      <Header statusGame={renderGameStatus} win={isGameWon} lost={isGameLost} />
+      <Header
+        statusGame={renderGameStatus}
+        win={isGameWon}
+        lost={isGameLost}
+        farewell={islastGuessIncorrect}
+      />
       <Chips
         langs={languages}
         count={wrongGuessedCount}

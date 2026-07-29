@@ -44,6 +44,7 @@ header div p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: #f9f4da;
   border-radius: 0.25rem;
   margin-block: 1.85rem;
