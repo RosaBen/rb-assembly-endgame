@@ -15,13 +15,15 @@ function App() {
     );
   };
 
-  console.log(guessedLetters);
-
   return (
     <main>
       <Header />
       <Chips chips={languages} />
-      <Word word={currentWord} />
+      <Word
+        word={currentWord}
+        selectedLetter={guessedLetters}
+        setSelectedLetter={setGuessedLetters}
+      />
       <Keyboard onSelect={handleSelect} />
       <button className="new-game">New Game</button>
       <Footer />

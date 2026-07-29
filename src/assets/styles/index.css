@@ -115,6 +115,14 @@ header div p {
   cursor: pointer;
 }
 
+.correct {
+  background-color: green;
+}
+
+.wrong {
+  background-color: red;
+}
+
 .new-game {
   background-color: #11b5e5;
   border: 1px solid #d7d7d7;
