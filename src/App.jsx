@@ -15,19 +15,24 @@ function App() {
     );
   };
 
+  const lowerCurrentWord = currentWord.toLowerCase();
+
+  const wrongGuessedArray = guessedLetters.filter(
+    (letter) => !lowerCurrentWord.includes(letter),
+  );
   return (
     <main>
       <Header />
       <Chips chips={languages} />
       <Word
-        word={currentWord}
+        word={lowerCurrentWord}
         selectedLetter={guessedLetters}
         // setSelectedLetter={setGuessedLetters}
       />
       <Keyboard
         onSelect={handleSelect}
         selected={guessedLetters}
-        currentWord={currentWord}
+        currentWord={lowerCurrentWord}
       />
       <button className="new-game">New Game</button>
       <Footer />

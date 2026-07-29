@@ -1,6 +1,5 @@
 export default function Word({ word, selectedLetter }) {
-  const lowercaseWord = word.toLowerCase();
-  const wordLetters = lowercaseWord
+  const wordLetters = word
     .split("")
     .map((letter) => (
       <span key={letter}>
