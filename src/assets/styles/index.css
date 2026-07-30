@@ -117,14 +117,15 @@ header div p {
 
 .letters span {
   background-color: #323232;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.125rem;
   border-bottom: 1px solid #f9f4da;
+  font-weight: bold;
 }
 
 .keyboard {
@@ -149,14 +150,21 @@ header div p {
   border: 1px solid #d7d7d7;
   cursor: pointer;
 }
-
-.keyboard button.correct,
 .letters span.guessed {
+  color: white;
+  text-shadow: 2px 2px 5px white;
+}
+
+.letters span.not-guessed {
+  color: red;
+  text-shadow: 2px 2px 5px red;
+  font-size: 1.3rem;
+}
+.keyboard button.correct {
   background-color: green;
 }
 
-.keyboard button.wrong,
-.letters span.not-guessed {
+.keyboard button.wrong {
   background-color: red;
 }
 

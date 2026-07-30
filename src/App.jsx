@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Confetti from "react-confetti-boom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -94,6 +95,26 @@ function App() {
 
   return (
     <main>
+      {isGameWon && (
+        <Confetti
+          mode="boom"
+          particleCount={100}
+          colors={[
+            "#ff577f",
+            "#ff884b",
+            "purple",
+            "#bd48bd",
+            "#3737bd",
+            "yellow",
+            "green",
+          ]}
+        />
+      )}
+      <div aria-live="polite" className="sr-only">
+        {isGameWon && (
+          <p>Congratulations! You won! Press "New Game" to start again.</p>
+        )}
+      </div>
       <Header
         statusGame={renderGameStatus}
         win={isGameWon}
