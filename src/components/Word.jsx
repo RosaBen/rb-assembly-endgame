@@ -1,8 +1,8 @@
 export default function Word({ word, selectedLetter }) {
   const wordLetters = word
     .split("")
-    .map((letter) => (
-      <span key={letter}>
+    .map((letter, index) => (
+      <span key={index}>
         {selectedLetter.includes(letter) ? letter.toUpperCase() : ""}
       </span>
     ));

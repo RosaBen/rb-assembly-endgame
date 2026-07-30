@@ -13,7 +13,7 @@ function App() {
   const { name, id } = languages;
 
   // state values
-  const [currentWord, setCurrentWord] = useState(getNewWord());
+  const [currentWord, setCurrentWord] = useState(() => getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   // derived values
@@ -73,6 +73,11 @@ function App() {
     return null;
   }
 
+  function startNewGame() {
+    setCurrentWord(getNewWord());
+    setGuessedLetters([]);
+  }
+
   return (
     <main>
       <Header
@@ -100,7 +105,11 @@ function App() {
         currentWord={lowerCurrentWord}
         disabled={isGameOver}
       />
-      {isGameOver && <button className="new-game">New Game</button>}
+      {isGameOver && (
+        <button className="new-game" onClick={() => startNewGame()}>
+          New Game
+        </button>
+      )}
       <Footer />
     </main>
   );
