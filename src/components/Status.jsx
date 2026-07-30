@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
-export default function Status({ status, win, lost, farewell }) {
+export default function Status({ status, mode }) {
   const classStatus = clsx("game-status", {
-    won: win,
-    lost: lost,
-    farewell: farewell,
+    won: mode === "won",
+    lost: mode === "lost",
+    farewell: mode === "farewell",
   });
 
   return (

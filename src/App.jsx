@@ -16,7 +16,7 @@ function App() {
   // state values
   const [currentWord, setCurrentWord] = useState(() => getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
-
+  console.log(currentWord);
   // derived values
   const numGuessedLeft = languages.length - 1;
   const lowerCurrentWord = currentWord.toLowerCase();
@@ -52,6 +52,14 @@ function App() {
     ),
   ];
 
+  const statusMode = isGameWon
+    ? "won"
+    : isGameLost
+      ? "lost"
+      : islastGuessIncorrect
+        ? "farewell"
+        : "idle";
+
   // functions
   function handleSelect(value) {
     setGuessedLetters((prev) =>
@@ -59,16 +67,6 @@ function App() {
     );
   }
   function renderGameStatus() {
-    if (!isGameOver && islastGuessIncorrect) {
-      return (
-        <>
-          <p className="farewell-text">
-            {getFarewellText(languages[wrongGuessedCount - 1].name)}
-          </p>
-        </>
-      );
-    }
-
     if (isGameWon) {
       return (
         <>
@@ -76,11 +74,23 @@ function App() {
           <p>Well done! 🎉</p>
         </>
       );
-    } else if (isGameLost) {
+    }
+
+    if (isGameLost) {
       return (
         <>
           <h2>Game over!</h2>
           <p>You lose! Better start learning Assembly 😭</p>
+        </>
+      );
+    }
+
+    if (!isGameOver && islastGuessIncorrect) {
+      return (
+        <>
+          <p className="farewell-text">
+            {getFarewellText(languages[wrongGuessedCount - 1].name)}
+          </p>
         </>
       );
     }
@@ -115,12 +125,7 @@ function App() {
           <p>Congratulations! You won! Press "New Game" to start again.</p>
         )}
       </div>
-      <Header
-        statusGame={renderGameStatus}
-        win={isGameWon}
-        lost={isGameLost}
-        farewell={islastGuessIncorrect}
-      />
+      <Header statusGame={renderGameStatus} statusMode={statusMode} />
       <Chips langs={languages} count={wrongGuessedCount} />
       <Word
         word={lowerCurrentWord}
