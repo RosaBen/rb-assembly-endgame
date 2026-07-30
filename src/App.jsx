@@ -6,14 +6,14 @@ import Chips from "./components/Chips";
 import Word from "./components/Word";
 import Keyboard from "./components/Keyboard";
 
-import { languages } from "./assets/scripts/data";
-import { getFarewellText } from "./assets/scripts/utils";
+import { languages, words } from "./assets/scripts/data";
+import { getFarewellText, getNewWord } from "./assets/scripts/utils";
 
 function App() {
   const { name, id } = languages;
 
   // state values
-  const [currentWord, setCurrentWord] = useState("REACT");
+  const [currentWord, setCurrentWord] = useState(getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   // derived values
