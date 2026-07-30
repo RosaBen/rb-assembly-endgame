@@ -37,6 +37,20 @@ function App() {
     )
     .join(" ");
 
+  const currentWordArray = lowerCurrentWord.split("");
+  const correctGuessesArray = guessedLetters.filter((letter) =>
+    currentWordArray.includes(letter),
+  );
+
+  const notGuessed = [
+    ...currentWordArray.filter(
+      (letter) => !correctGuessesArray.includes(letter),
+    ),
+    ...correctGuessesArray.filter(
+      (letter) => !currentWordArray.includes(letter),
+    ),
+  ];
+
   // functions
   function handleSelect(value) {
     setGuessedLetters((prev) =>
@@ -87,7 +101,13 @@ function App() {
         farewell={islastGuessIncorrect}
       />
       <Chips langs={languages} count={wrongGuessedCount} />
-      <Word word={lowerCurrentWord} selectedLetter={guessedLetters} />
+      <Word
+        word={lowerCurrentWord}
+        selectedLetter={guessedLetters}
+        lost={isGameLost}
+        notFound={notGuessed}
+        found={correctGuessesArray}
+      />
 
       {/* Combined visually-hidden aria-live region for status updates */}
       <section className="sr-only" aria-live="polite" role="status">

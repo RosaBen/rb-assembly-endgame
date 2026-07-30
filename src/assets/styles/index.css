@@ -150,11 +150,13 @@ header div p {
   cursor: pointer;
 }
 
-.keyboard button.correct {
+.keyboard button.correct,
+.letters span.guessed {
   background-color: green;
 }
 
-.keyboard button.wrong {
+.keyboard button.wrong,
+.letters span.not-guessed {
   background-color: red;
 }
 
