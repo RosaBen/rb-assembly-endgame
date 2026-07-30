@@ -40,13 +40,28 @@ header div p {
 }
 
 .game-status {
-  background-color: #10a95b;
+  background-color: #262626;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: #f9f4da;
   border-radius: 0.25rem;
   margin-block: 1.85rem;
+  min-height: 60px;
+}
+
+.game-status.won {
+  background-color: #10a95b;
+}
+
+.game-status.lost {
+  background-color: #ba2a2a;
+}
+
+.game-status.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
 }
 
 .game-status h2 {
@@ -58,6 +73,11 @@ header div p {
   margin: 0.3rem;
 }
 
+.game-status p.farewell-text {
+  font-style: italic;
+  font-weight: 400;
+}
+
 .language-chips {
   display: flex;
   flex-wrap: wrap;
@@ -67,9 +87,24 @@ header div p {
   margin-bottom: 2rem;
 }
 
-.language-chips span {
+.language-chips .chip {
   padding: 0.5rem;
   border-radius: 0.25rem;
+  position: relative;
+}
+
+.language-chips .chip.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .letters {
@@ -82,14 +117,15 @@ header div p {
 
 .letters span {
   background-color: #323232;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.125rem;
   border-bottom: 1px solid #f9f4da;
+  font-weight: bold;
 }
 
 .keyboard {
@@ -114,6 +150,28 @@ header div p {
   border: 1px solid #d7d7d7;
   cursor: pointer;
 }
+.letters span.guessed {
+  color: white;
+  text-shadow: 2px 2px 5px white;
+}
+
+.letters span.not-guessed {
+  color: red;
+  text-shadow: 2px 2px 5px red;
+  font-size: 1.3rem;
+}
+.keyboard button.correct {
+  background-color: green;
+}
+
+.keyboard button.wrong {
+  background-color: red;
+}
+
+.keyboard button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 
 .new-game {
   background-color: #11b5e5;
@@ -126,6 +184,22 @@ header div p {
   margin-inline: auto;
   cursor: pointer;
   margin-top: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 3px 3px 5px white;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 footer {
@@ -133,4 +207,12 @@ footer {
   background-color: grey;
   padding-block: 1rem;
   margin-top: 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 5px white;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
 }

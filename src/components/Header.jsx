@@ -1,6 +1,6 @@
 import Status from "./Status";
 
-export default function Header() {
+export default function Header({ statusGame, statusMode }) {
   return (
     <header>
       <div>
@@ -10,7 +10,7 @@ export default function Header() {
           from Assembly!
         </p>
       </div>
-      <Status />
+      <Status status={statusGame} mode={statusMode} />
     </header>
   );
 }

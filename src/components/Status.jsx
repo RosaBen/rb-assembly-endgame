@@ -1,8 +1,15 @@
-export default function Status() {
+import clsx from "clsx";
+
+export default function Status({ status, mode }) {
+  const classStatus = clsx("game-status", {
+    won: mode === "won",
+    lost: mode === "lost",
+    farewell: mode === "farewell",
+  });
+
   return (
-    <section className="game-status">
-      <h2>You win!</h2>
-      <p>Well done! 🎉</p>
+    <section className={classStatus} aria-live="polite" role="status">
+      {status()}
     </section>
   );
 }
