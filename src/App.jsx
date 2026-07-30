@@ -16,7 +16,7 @@ function App() {
   // state values
   const [currentWord, setCurrentWord] = useState(() => getNewWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
-  console.log(currentWord);
+
   // derived values
   const numGuessedLeft = languages.length - 1;
   const lowerCurrentWord = currentWord.toLowerCase();
